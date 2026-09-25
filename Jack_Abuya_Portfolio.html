@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Abuya — Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#EEF2EF;
+    --panel:#FFFFFF;
+    --ink:#16241F;
+    --ink-soft:#3E4C46;
+    --forest:#2F6B4F;
+    --forest-deep:#1F4B37;
+    --ochre:#C98A2C;
+    --rule:#CFD8D1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--forest-deep);}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
+
+  header.hero{padding:72px 0 48px; border-bottom:1px solid var(--rule);}
+  .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--forest);
+    letter-spacing:0.02em;
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size:clamp(36px,6vw,56px);
+    line-height:1.08;
+    color:var(--ink);
+    max-width:14ch;
+  }
+  .tagline{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-top:18px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 18px;
+    margin-top:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .contact-row a{color:var(--forest-deep); text-decoration:none; border-bottom:1px solid var(--rule);}
+  .contact-row a:hover{border-bottom-color:var(--forest);}
+
+  section{padding:56px 0; border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:26px;
+    margin-bottom:24px;
+    color:var(--ink);
+  }
+  p.lead{max-width:64ch; color:var(--ink-soft); font-size:16.5px;}
+
+  /* Skills */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px 40px;
+    margin-top:8px;
+  }
+  .skill-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--forest);
+    text-transform:none;
+    margin-bottom:8px;
+  }
+  .skill-group ul{list-style:none;}
+  .skill-group li{
+    font-size:15px;
+    color:var(--ink-soft);
+    padding:4px 0;
+    border-bottom:1px dashed var(--rule);
+  }
+  .skill-group li:last-child{border-bottom:none;}
+
+  /* Project */
+  .project{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:32px;
+    margin-top:8px;
+  }
+  .project-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px 20px;
+    margin-bottom:6px;
+  }
+  .project-head h3{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:22px;
+  }
+  .project-head .dates{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .project-links{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    margin-bottom:18px;
+  }
+  .project-links a{margin-right:16px; text-decoration:none; border-bottom:1px solid var(--rule);}
+  .project ul{margin:0 0 22px 20px; color:var(--ink-soft); font-size:15.5px;}
+  .project li{margin-bottom:7px;}
+
+  /* schema snippet */
+  .schema{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    background:var(--forest-deep);
+    color:#DCEAE1;
+    border-radius:3px;
+    padding:18px 20px;
+    overflow-x:auto;
+  }
+  .schema .tbl{color:#F2C879; margin-bottom:2px;}
+  .schema .col{color:#AFD6C2;}
+  .schema .grp{margin-bottom:12px;}
+  .schema .grp:last-child{margin-bottom:0;}
+
+  /* transcript / education */
+  table.transcript{width:100%; border-collapse:collapse; margin-top:8px;}
+  table.transcript td{
+    padding:14px 0;
+    border-bottom:1px solid var(--rule);
+    vertical-align:top;
+    font-size:15.5px;
+  }
+  table.transcript td.inst{font-weight:600; color:var(--ink);}
+  table.transcript td.detail{color:var(--ink-soft);}
+  table.transcript td.date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    text-align:right;
+    white-space:nowrap;
+    padding-left:16px;
+  }
+
+  footer{padding:48px 0 72px;}
+  footer .lead{margin-bottom:6px;}
+  footer .sign{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:20px;
+  }
+
+  @media (max-width:560px){
+    .skill-groups{grid-template-columns:1fr;}
+    .project{padding:22px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Portfolio</div>
+    <h1>Jack Abuya</h1>
+    <p class="tagline">Full-stack web developer building for Kenyan classrooms — React and Supabase by day, mathematics tutor by evening.</p>
+    <div class="contact-row">
+      <span>Nairobi, Kenya</span>
+      <a href="mailto:jacksalim9624@gmail.com">jacksalim9624@gmail.com</a>
+      <span>0795803881</span>
+      <a href="https://github.com/Jacksalim" target="_blank" rel="noopener">github.com/Jacksalim</a>
+      <a href="https://eduspark.ink" target="_blank" rel="noopener">eduspark.ink</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p class="lead">
+      I'm a Bachelor of Education student at Kenyatta University (Mathematics and Business Studies) who taught
+      myself full-stack development by building a real product. EduSpark, a CBC-aligned learning platform for
+      Kenyan schools, started as a way to combine that teaching background with code — it now handles multi-role
+      logins, AI-generated quizzes, and grade progression for real learners. I tutor mathematics remotely on the
+      side, which keeps the education half of my work grounded in actual classroom needs.
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>frontend</h3>
+        <ul>
+          <li>React</li>
+          <li>Vite</li>
+          <li>React Router</li>
+          <li>JavaScript</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>backend &amp; data</h3>
+        <ul>
+          <li>Supabase (PostgreSQL, Auth)</li>
+          <li>Row Level Security</li>
+          <li>Vercel serverless functions</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>ai integration</h3>
+        <ul>
+          <li>Gemini API</li>
+          <li>Anthropic Claude API</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>workflow</h3>
+        <ul>
+          <li>Git / GitHub</li>
+          <li>Vercel CI/CD</li>
+          <li>Replit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured project</h2>
+    <div class="project">
+      <div class="project-head">
+        <h3>EduSpark</h3>
+        <span class="dates">2024 — present</span>
+      </div>
+      <div class="project-links">
+        <a href="https://eduspark.ink" target="_blank" rel="noopener">eduspark.ink</a>
+        <a href="https://github.com/Jacksalim/Eduspark-portal" target="_blank" rel="noopener">source on GitHub</a>
+      </div>
+      <p style="color:var(--ink-soft); font-size:15.5px; margin-bottom:18px;">
+        A CBC-aligned educational platform serving four kinds of users on one schema — students, parents, tutors,
+        and admins — with AI doing the heavy lifting on quiz generation.
+      </p>
+      <ul>
+        <li>Multi-role authentication with RBAC and Supabase Row Level Security enforcing who can see what.</li>
+        <li>AI quiz generation using Gemini as the primary model, with Anthropic Claude as an automatic fallback.</li>
+        <li>Self-directed student grade-promotion system, letting learners move up once they've shown mastery.</li>
+        <li>Migrated the full app to React Router and resolved a run of Vite/plugin-react version conflicts along the way.</li>
+        <li>Deployment pipeline running from Replit through GitHub to Vercel auto-deploy.</li>
+      </ul>
+      <div class="schema">
+        <div class="grp">
+          <div class="tbl">profiles</div>
+          <div class="col">id · full_name · role · created_at</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">topic_progress</div>
+          <div class="col">student_id · topic_id · status · updated_at</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">promotions</div>
+          <div class="col">student_id · from_grade · to_grade · decided_by</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">parent_student_links</div>
+          <div class="col">parent_id · student_id</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Also teaching</h2>
+    <p class="lead">
+      Alongside development, I tutor a small group of learners in mathematics remotely — an ongoing, informal
+      practice that keeps me close to how students actually get stuck on concepts, which feeds directly back
+      into how EduSpark's quizzes and progress tracking are designed.
+    </p>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <table class="transcript">
+      <tr>
+        <td class="inst">Kenyatta University<br><span class="detail">Bachelor of Education — Mathematics and Business Studies</span></td>
+        <td class="date">Aug 2024 –<br>exp. Sep 2028</td>
+      </tr>
+      <tr>
+        <td class="inst">Oriwo Boys' High School<br><span class="detail">KCSE — Grade B</span></td>
+        <td class="date">2017 – 2020</td>
+      </tr>
+      <tr>
+        <td class="inst">Ndisi Primary School<br><span class="detail">KCPE</span></td>
+        <td class="date">2009 – 2016</td>
+      </tr>
+    </table>
+  </section>
+
+  <footer>
+    <p class="lead">Open to full-stack and frontend roles, remote or on-site in Kenya.</p>
+    <div class="sign">jacksalim9624@gmail.com · 0795803881</div>
+  </footer>
+</div>
+
+</body>
+</html>
