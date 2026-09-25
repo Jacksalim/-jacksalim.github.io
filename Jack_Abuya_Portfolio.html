@@ -217,15 +217,24 @@
           <li>React</li>
           <li>Vite</li>
           <li>React Router</li>
+          <li>Tailwind CSS</li>
           <li>JavaScript</li>
         </ul>
       </div>
       <div class="skill-group">
         <h3>backend &amp; data</h3>
         <ul>
-          <li>Supabase (PostgreSQL, Auth)</li>
-          <li>Row Level Security</li>
-          <li>Vercel serverless functions</li>
+          <li>Node.js / Express</li>
+          <li>PostgreSQL (raw SQL &amp; Supabase)</li>
+          <li>JWT auth &amp; Row Level Security</li>
+          <li>M-Pesa Daraja API</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>testing</h3>
+        <ul>
+          <li>Jest / Supertest</li>
+          <li>Integration testing against real databases</li>
         </ul>
       </div>
       <div class="skill-group">
@@ -247,7 +256,7 @@
   </section>
 
   <section>
-    <h2>Featured project</h2>
+    <h2>Featured projects</h2>
     <div class="project">
       <div class="project-head">
         <h3>EduSpark</h3>
@@ -284,6 +293,46 @@
         <div class="grp">
           <div class="tbl">parent_student_links</div>
           <div class="col">parent_id · student_id</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project" style="margin-top:24px;">
+      <div class="project-head">
+        <h3>Duka POS</h3>
+        <span class="dates">2026</span>
+      </div>
+      <div class="project-links">
+        <span style="color:var(--ink-soft);">Node.js/Express &amp; PostgreSQL backend · React/Vite/Tailwind frontend</span>
+      </div>
+      <p style="color:var(--ink-soft); font-size:15.5px; margin-bottom:18px;">
+        A full-stack point-of-sale system for supermarkets, covering the whole retail loop: selling, receiving
+        stock, returns, expenses, and M-Pesa payments. The backend is fully built and tested; the frontend UI is
+        built against the real API and pending a first visual/click-through pass before I'd call it launch-ready.
+      </p>
+      <ul>
+        <li>JWT authentication with rotating, hashed refresh tokens and stolen-token reuse detection.</li>
+        <li>Atomic sale transactions with server-side price/tax computation and DB-enforced oversell rejection.</li>
+        <li>M-Pesa Daraja STK Push integration — stock reservation on initiation, amount-trust-hardened callback handling so a forged callback can't under-record a sale.</li>
+        <li>Role-based access control enforced at the database and API layer across products, purchasing, returns, and expenses.</li>
+        <li>40 automated tests (Jest + Supertest) running against a real PostgreSQL database, covering auth, sales, purchasing, returns, expenses, and reporting.</li>
+      </ul>
+      <div class="schema">
+        <div class="grp">
+          <div class="tbl">sales / sale_items</div>
+          <div class="col">branch_id · cashier_id · total · payment_status</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">products / inventory</div>
+          <div class="col">sku · selling_price · quantity_on_hand</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">purchases / stock_movements</div>
+          <div class="col">supplier_id · status · movement_type</div>
+        </div>
+        <div class="grp">
+          <div class="tbl">returns / refresh_tokens</div>
+          <div class="col">sale_id · reason · token_hash</div>
         </div>
       </div>
     </div>
